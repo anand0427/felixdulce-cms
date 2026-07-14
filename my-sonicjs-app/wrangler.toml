@@ -5,6 +5,14 @@ compatibility_flags = ["nodejs_compat"]
 account_id = "66ac946cc319414ca3b5350df514521e"
 workers_dev = true
 
+# This forces esbuild to bypass the missing local workspace paths
+rules = [
+  { type = "ESModule", converters = ["esm"], globs = ["**/*.js"] }
+]
+
+[build]
+command = ""
+
 [[d1_databases]]
 binding = "DB"
 database_name = "felixdulce-db"
