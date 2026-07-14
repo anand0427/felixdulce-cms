@@ -17,22 +17,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8
-
-      - name: Install dependencies (Strict Hoisting)
-        run: |
-          pnpm config set shamefully-hoist true
-          pnpm install --no-frozen-lockfile
-
-      - name: Build Monorepo (Using Workspace Binaries)
-        run: pnpm -r exec tsup --help || true && pnpm run build
-
-      - name: Deploy to Cloudflare Workers
+      - name: Install and Deploy (Pure NPM)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          workingDirectory: 'packages/core'
-          command: deploy src/index.ts
+          command: deploy src/index.ts --name felixdulce-cms
