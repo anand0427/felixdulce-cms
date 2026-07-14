@@ -17,6 +17,15 @@ jobs:
         with:
           node-version: 20
 
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install Dependencies
+        working-directory: my-sonicjs-app
+        run: pnpm install --no-frozen-lockfile
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
