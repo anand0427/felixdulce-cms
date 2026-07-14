@@ -26,10 +26,6 @@ jobs:
         working-directory: my-sonicjs-app
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build All Monorepo Workspaces
-        working-directory: my-sonicjs-app
-        run: pnpm run build
-
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
