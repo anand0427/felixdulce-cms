@@ -22,14 +22,13 @@ jobs:
         with:
           version: 8
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install dependencies (Flatten node_modules tree)
+        run: pnpm install --shamefully-hoist
 
-      - name: Install Compilers Globally
-        run: npm install -g tsup typescript
-
-      - name: Build Monorepo
+      - name: Build Monorepo (With ESM Path Resolution)
         run: pnpm run build
+        env:
+          NODE_OPTIONS: "--experimental-specifier-resolution=node"
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
