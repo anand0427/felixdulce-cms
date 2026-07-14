@@ -1,6 +1,6 @@
 name = "feliixdulce-cms"
 main = "src/index.ts"
-compatibility_date = "2025-05-05"
+compatibility_date = "2026-07-14"
 compatibility_flags = ["nodejs_compat"]
 
 # Cloudflare account
