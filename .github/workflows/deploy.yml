@@ -26,9 +26,10 @@ jobs:
         working-directory: my-sonicjs-app
         run: pnpm install --no-frozen-lockfile
 
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          workingDirectory: 'my-sonicjs-app'
-          packageManager: pnpm
+      - name: Direct Build and Deploy
+        working-directory: my-sonicjs-app
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          pnpm run build
+          pnpm exec wrangler deploy
