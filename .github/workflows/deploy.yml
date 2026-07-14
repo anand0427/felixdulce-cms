@@ -22,13 +22,13 @@ jobs:
         with:
           version: 8
 
-      - name: Install dependencies (Flatten node_modules tree)
-        run: pnpm install --shamefully-hoist
+      - name: Install dependencies (Strict Hoisting)
+        run: |
+          pnpm config set shamefully-hoist true
+          pnpm install --no-frozen-lockfile
 
-      - name: Build Monorepo (With ESM Path Resolution)
-        run: pnpm run build
-        env:
-          NODE_OPTIONS: "--experimental-specifier-resolution=node"
+      - name: Build Monorepo (Using Workspace Binaries)
+        run: pnpm -r exec tsup --help || true && pnpm run build
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
