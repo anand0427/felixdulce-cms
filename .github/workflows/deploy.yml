@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Bundler Globally (Bypasses hoisting bugs)
-        run: npm install -g tsup
+      - name: Install Compilers Globally
+        run: npm install -g tsup typescript
 
       - name: Build Monorepo
         run: pnpm run build
