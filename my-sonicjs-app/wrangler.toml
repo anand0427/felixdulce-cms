@@ -1,10 +1,10 @@
-name = "feliixdulce-cms"
+name = "felixdulce-cms"
 main = "src/index.ts"
 compatibility_date = "2026-07-14"
 compatibility_flags = ["nodejs_compat"]
 
 # Cloudflare account
-account_id = "f9d6328dc3115e621758a741dda3d5c4"
+account_id = "66ac946cc319414ca3b5350df514521e"
 
 # Cloudflare Workers settings
 workers_dev = true
