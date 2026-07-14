@@ -1,6 +1,7 @@
 name: Deploy Worker
 
 on:
+  on:
   push:
     branches:
       - main
@@ -17,8 +18,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Deploy (Pure NPM)
+      - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy src/index.ts --name felixdulce-cms
+          workingDirectory: 'my-sonicjs-app'
