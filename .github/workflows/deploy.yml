@@ -26,6 +26,10 @@ jobs:
         working-directory: my-sonicjs-app
         run: pnpm install --no-frozen-lockfile
 
+      - name: Build Core Workspaces
+        working-directory: my-sonicjs-app
+        run: pnpm run build --filter @sonicjs-cms/core...
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
